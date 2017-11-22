@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,25 +26,25 @@ public class MainActivity extends AppCompatActivity {
         button1 = (Button) findViewById(R.id.button01);
         button2 = (Button) findViewById(R.id.button02);
 
-        preferences = getApplicationContext().getSharedPreferences(SHARED_PREFS_KEY,MODE_PRIVATE);
+        preferences = getApplicationContext().getSharedPreferences(SHARED_PREFS_KEY, MODE_PRIVATE);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = preferences.edit();
 
-             String email = editText.getText().toString();
-             editor.putString("email" , email);
-             editor.apply();
-             editor.commit();
-             editText.setText("");
+                String email = editText.getText().toString();
+                editor.putString(email, email);
+                editor.apply();
+                editText.setText("");
+                Toast.makeText(getApplicationContext(),"Added Email",Toast.LENGTH_SHORT).show();
             }
         });
 
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,RecyclerActivity.class);
+                Intent intent = new Intent(MainActivity.this, RecyclerActivity.class);
                 intent.putExtra("sharedprefs", SHARED_PREFS_KEY);
                 startActivity(intent);
             }
