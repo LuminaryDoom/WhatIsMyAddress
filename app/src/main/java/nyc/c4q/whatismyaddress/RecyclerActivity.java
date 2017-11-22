@@ -1,8 +1,13 @@
 package nyc.c4q.whatismyaddress;
 
-/**
- * Created by c4q on 11/21/17.
- */
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
-public class RecyclerActivity {
+public class RecyclerActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_recycler);
+    }
 }
